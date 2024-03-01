@@ -1,9 +1,11 @@
-import Products from "./components/Products"
+import Products from "./components/products"
+import PaginationProducts from "./components/pagination"
+import SearchBar from "./components/ui/searchBar"
 
-const getData = async() => {
+const getData = async () => {
   const res = await fetch("https://dummyjson.com/products")
 
-  if(!res.ok){
+  if (!res.ok) {
     throw new Error('Failed to fetch data')
   }
 
@@ -11,11 +13,18 @@ const getData = async() => {
 }
 
 export default async function Home() {
+  //API data products
   const productsResponse = await getData()
-  
+
+  //pagination
+
+
   return (
     <main>
-      <Products productsResponse={productsResponse}/>
+      <SearchBar />
+      <Products productsResponse={productsResponse} />
+      <PaginationProducts />
+
     </main>
   )
 }
