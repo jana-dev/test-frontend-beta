@@ -1,8 +1,8 @@
 'use client'
 import Products from "./components/products"
 import PaginationProducts from "./components/pagination"
-import SearchBar from "./components/ui/searchBar"
-import { useState, useEffect } from "react"
+import CategoryFilter from "./components/ui/categoryFilter"
+import { useState, useEffect, Dispatch, SetStateAction} from "react"
 
 
 const Home = () => {
@@ -35,14 +35,15 @@ const Home = () => {
     setSelectedCategory(category);
   };
 
+
   return (
     <main>
       {/* Componente de barra de pesquisa com seleção de categoria */}
-      <SearchBar onCategoryChange={handleCategoryChange} />
+      <CategoryFilter onCategoryChange={handleCategoryChange}/>
 
       {/* Componente de produtos */}
       {productsResponse && (
-        <Products productsResponse={productsResponse} selectedCategory={selectedCategory} />
+        <Products productsResponse={productsResponse} selectedCategory={selectedCategory}/>
       )}
 
       {/* Componente de paginação */}

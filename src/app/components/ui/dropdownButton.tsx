@@ -23,6 +23,7 @@ function DropdownButton() {
                 aria-expanded={open ? 'true' : undefined}
                 onClick={handleClick}
                 size='small'
+                sx={{ '&:hover': { backgroundColor: 'transparent' } }}
             >
                 <MoreVertIcon />
             </Button>
