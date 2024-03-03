@@ -42,7 +42,7 @@ const CategoryFilter: React.FC<SearchBarProps> = ({ onCategoryChange}) => {
     };
 
     return (
-        <div className="flex flex-wrap justify-between mt-4  max-w-[1280px] m-auto px-4">
+        <div className="flex flex-wrap justify-between mt-6 max-w-[1280px]">
             <div>
                 {/*Filter*/}
                 <Box sx={{ minWidth: 120 }}>

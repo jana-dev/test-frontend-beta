@@ -1,52 +1,86 @@
-'use client'
-import Products from "./components/products"
-import PaginationProducts from "./components/pagination"
-import CategoryFilter from "./components/ui/categoryFilter"
-import { useState, useEffect, Dispatch, SetStateAction} from "react"
+'use client';
+import { useState, useEffect } from "react";
+import Products from "./components/Products";
+import PaginationProducts from "./components/pagination";
+import MenuComponent from "./components/ui/menuComponent";
 
+interface ProductProps {
+  id: number;
+  title: string;
+  brand: string;
+  price: number;
+  stock: number;
+  rating: number;
+  category: string;
+  thumbnail: string;
+  description: string;
+  images: Array<string>;
+  discountPercentage: number;
+}
+
+interface ProductsResponse {
+  total: number;
+  skip: number;
+  limit: number;
+  products: ProductProps[];
+}
 
 const Home = () => {
-  // Estado para armazenar os produtos
-  const [productsResponse, setProductsResponse] = useState();
-  // Estado para armazenar a categoria selecionada
-  const [selectedCategory, setSelectedCategory] = useState<string>('');
+  const [productsResponse, setProductsResponse] = useState<ProductsResponse>({
+    skip: 0,
+    limit: 0,
+    total: 0,
+    products: [],
+  });
+  const [selectedCategory, setSelectedCategory] = useState<string>("");
 
-  // Função para buscar os dados da API
   const getData = async () => {
     try {
       const res = await fetch("https://dummyjson.com/products");
       if (!res.ok) {
-        throw new Error('Failed to fetch data');
+        throw new Error("Failed to fetch data");
       }
       const data = await res.json();
       setProductsResponse(data);
     } catch (error) {
-      console.error('Error fetching data:', error);
+      console.error("Error fetching data:", error);
     }
-  }
+  };
 
-  // Efeito para buscar os dados da API quando o componente é montado
   useEffect(() => {
     getData();
   }, []);
 
-  // Função para lidar com a mudança de categoria
+  useEffect(() => {
+    console.log(productsResponse);
+  }, [productsResponse]);
+
   const handleCategoryChange = (category: string) => {
     setSelectedCategory(category);
   };
 
+  const handleAddProductSuccess = (newProduct: ProductProps) => {
+    if (productsResponse) {
+      const updatedProductsResponse: ProductsResponse = {
+        ...productsResponse,
+        products: [...productsResponse.products, newProduct],
+      };
+      setProductsResponse(updatedProductsResponse);
+    }
+  };
 
   return (
     <main>
-      {/* Componente de barra de pesquisa com seleção de categoria */}
-      <CategoryFilter onCategoryChange={handleCategoryChange}/>
-
-      {/* Componente de produtos */}
+      <MenuComponent
+        onCategoryChange={handleCategoryChange}
+        onAddProductSuccess={handleAddProductSuccess}
+      />
       {productsResponse && (
-        <Products productsResponse={productsResponse} selectedCategory={selectedCategory}/>
+        <Products
+          productsResponse={productsResponse}
+          selectedCategory={selectedCategory}
+        />
       )}
-
-      {/* Componente de paginação */}
       <PaginationProducts />
     </main>
   );

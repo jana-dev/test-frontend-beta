@@ -4,7 +4,11 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
-function DropdownButton() {
+interface DropdownButtonProps{
+    onDelete: () => void;
+}
+
+function DropdownButton({onDelete}: DropdownButtonProps) {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -15,7 +19,7 @@ function DropdownButton() {
     };
 
     return (
-        <div className='absolute right-0 top-0 w-12'>
+        <div className='absolute right-0 top-2 w-12'>
             <Button
                 id="basic-button"
                 aria-controls={open ? 'basic-menu' : undefined}
@@ -23,7 +27,7 @@ function DropdownButton() {
                 aria-expanded={open ? 'true' : undefined}
                 onClick={handleClick}
                 size='small'
-                sx={{ '&:hover': { backgroundColor: 'transparent' } }}
+                sx={{color: "green", '&:hover': { backgroundColor: 'transparent' } }}
             >
                 <MoreVertIcon />
             </Button>
@@ -36,8 +40,7 @@ function DropdownButton() {
                     'aria-labelledby': 'basic-button',
                 }}
             >
-                <MenuItem onClick={handleClose}>Edit</MenuItem>
-                <MenuItem onClick={handleClose}>Delete</MenuItem>
+                <MenuItem onClick={onDelete}>Delete</MenuItem>
             </Menu>
         </div>
     )
