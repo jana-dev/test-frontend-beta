@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "next build && next export && touch out/.nojekyll && gh-pages -d out -b gh-pages -t true",
+    "deploy": "next build && touch out/.nojekyll && gh-pages -d out -b gh-pages -t true --repo=https://github.com/jana-dev/test-frontend-beta.git",
     "predeploy": "next build"
   },
   "dependencies": {
