@@ -2,14 +2,11 @@
   "name": "test-frontend-beta",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://jana-dev.github.io/test-frontend-beta",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "deploy": "next build && touch out/.nojekyll && gh-pages -d out -b gh-pages -t true --repo=https://github.com/jana-dev/test-frontend-beta.git",
-    "predeploy": "next build"
+    "lint": "next lint"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
