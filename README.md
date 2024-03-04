@@ -22,6 +22,14 @@ Projeto realizado para testar meus conhecimentos em Next.js, Typescript
 - Deletar o produto
 - Adicionar um novo produto
 
+## Falta adicionar:
+
+- Paginação
+- Edição dos Produtos
+- Melhorar a adição do novo produto (contém alguns bugs)
+- Realizar testes unitários
+
+
 ## Acesse aqui (deploy):
 
 https://test-frontend-beta-three.vercel.app/
