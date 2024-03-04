@@ -30,7 +30,7 @@ const AddProductModal: React.FC<AddProductModalProps> = ({ open, onClose, onAddP
     rating: 0,
     brand: "",
     title: "",
-    thumbnail: "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg", // A API não deixa enviar qualquer url de qualquer imagem, e até mesmoa url da imagem que a própria api fornece está dando erro, então estou enviando uma imagem padrão de um produto retornado pela API
+    thumbnail: "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg", // A API não deixa enviar qualquer url de qualquer imagem, e até mesmo a url da imagem que a própria api fornece está dando erro, então estou enviando uma imagem padrão de um produto retornado pela API
     description: "",
     discountPercentage: 0,
   });
